@@ -1,0 +1,21 @@
+{
+  "name": "postgres-api",
+  "version": "1.0.0",
+  "description": "Aplicação para revisão de estudo com:",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/cors": "^9.0.1",
+    "dotenv": "^16.4.5",
+    "fastify": "^4.26.2",
+    "nodemon": "^3.1.0",
+    "pg": "^8.11.3"
+  }
+}

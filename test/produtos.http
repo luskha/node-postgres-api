@@ -1,0 +1,17 @@
+GET http://[::1]:5000/produtos
+###
+
+
+POST http://[::1]:5000/produto
+Content-Type: application/json
+
+{
+    "id": 1,
+    "nome": "Produto Teste",
+    "descricao": "Descrição do produto teste",
+    "desconto": 0,
+    "preco": 99.99,
+    "ativo": true,
+    "categoria": "Teste",
+    "data_cadastro": "2024-03-19"
+}

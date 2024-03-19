@@ -1,10 +1,9 @@
-import db from '../db/index.js';
+import { connection } from "../db/db.js";
 
-const getUserById = async (id) => {
-    const query = 'SELECT * FROM users WHERE id = $1';
-    const values = [id];
-    const { rows } = await db.query(query, values);
+const getAllProducts = async () => {
+    const query = 'SELECT * FROM produtos';
+    const { rows } = await connection.query(query);
     return rows[0];
 };
 
-export { getUserById };
+export { getAllProducts };
