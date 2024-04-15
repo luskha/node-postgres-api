@@ -25,4 +25,5 @@ export const config = new Pool({
     database: 'postgres',
     password: DB_PASSWORD,
     port: 5432,
+    ssl: { rejectUnauthorized: false } // Opção para permitir conexões sem SSL
 });
