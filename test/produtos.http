@@ -1,7 +1,7 @@
 GET http://[::1]:5000/produtos
 ###
 
-GET http://[::1]:5000/produto/10
+GET http://[::1]:5000/produto/2
 ###
 
 POST http://[::1]:5000/produto
@@ -9,12 +9,12 @@ Content-Type: application/json
 
 {
     "id": 5,
-    "nome": "Produto Teste 4",
-    "descricao": "Descrição do produto teste 4",
+    "nome": "Produto",
+    "descricao": "Descrição do produto",
     "desconto": 0,
-    "preco": 199.99,
+    "preco": 200.99,
     "ativo": false,
-    "categoria": "Teste 3",
+    "categoria": "Teste",
     "data_cadastro": "2024-03-19"
 }
 

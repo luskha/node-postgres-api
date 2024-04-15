@@ -1,11 +1,11 @@
 import fastify from 'fastify';
 import cors from '@fastify/cors';
 import { rotasProdutos } from './controller/produto.controller.js';
-import { connection } from './db/db.js';
+import { connection, createTableIfNotExists } from './db/db.js';
 import { config } from './db/config/index.js';
 
 const PORT = 8080
-const HOST = '127.0.0.1'
+const HOST = '0.0.0.0'
 
 const app = fastify({ logger: false });
 
@@ -13,7 +13,7 @@ app.register(cors, {
     origin: '*',
 });
 
-connection()
+await connection()
 
 app.get('/', (res, reply) => {
     return {
@@ -35,7 +35,7 @@ app.get('/produto/:id', async (req, res) => {
 
     const result = await config.query(query);
 
-    if(result.rows.length === 0) {
+    if (result.rows.length === 0) {
         res.status(404).send(`Produto com o id: ${id} não encontrado!`)
         return;
     }
@@ -66,7 +66,7 @@ app.put('/produto/:id', async (req, res) => {
         const query = 'UPDATE produtos SET nome=$1, descricao=$2, desconto=$3, preco=$4, ativo=$5, categoria=$6, data_cadastro=$7 WHERE id=$8 RETURNING *';
         const values = Object.keys(req.body) //[nome, descricao, desconto, preco, ativo, categoria, data_cadastro, id];
         const result = await config.query(query, values);
-        
+
         if (result.rows.length === 0) {
             res.status(404).send('Produto não encontrado');
         } else {
@@ -98,7 +98,7 @@ app.delete('/produto/:id', async (req, res) => {
 
 //app.register(rotasProdutos);
 
-app.listen({ /* host: 'localhost', */ port: `5000` }, (err, address) => {
+app.listen({ host: HOST, port: PORT }, (err, address) => {
     if (err) {
         /* app.log.error(err);
         process.exit(1); */
