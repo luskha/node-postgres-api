@@ -4,8 +4,10 @@ import { rotasProdutos } from './controller/produto.controller.js';
 import { connection, createTableIfNotExists } from './db/db.js';
 import { config } from './db/config/index.js';
 
-const PORT = 8080
-const HOST = '0.0.0.0'
+const PORT = 5000
+
+// Para subir no Render o Host precisa ser adicionado como 0.0.0.0, quando não houver variavel de ambiente host o servidor usará '127.0.0.1'
+const HOST = process.env.HOST || '127.0.0.1'
 
 const app = fastify({ logger: false });
 

@@ -19,11 +19,11 @@ const DB_PASSWORD = process.env.DB_PASSWORD || 'col@123';
 //if (!isDev) console.log('in production environment - skipping database creation.');
 
 export const config = new Pool({
-    user: DB_USER,
-    host: DB_HOST,
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
     /* database: DB_NAME, */
-    database: 'postgres',
-    password: DB_PASSWORD,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
     port: 5432,
     ssl: { rejectUnauthorized: false } // Opção para permitir conexões sem SSL
 });
