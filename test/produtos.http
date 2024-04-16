@@ -1,7 +1,7 @@
 GET http://[::1]:5000/produtos
 ###
 
-GET http://[::1]:5000/produto/7
+GET http://[::1]:5000/produto/1
 ###
 
 POST http://[::1]:5000/produto

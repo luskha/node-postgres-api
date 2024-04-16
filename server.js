@@ -3,8 +3,10 @@ import cors from '@fastify/cors';
 import { connection } from './db/db.js';
 import { produtosRoute } from './routes/produtos.routes.js';
 
-const PORT = 8080
-const HOST = '127.0.0.1'
+const PORT = 5000
+
+// Para subir no Render o HOST precisa ser adicionado como '0.0.0.0', quando não houver variável de ambiente HOST o servidor usará '127.0.0.1'
+const HOST = process.env.HOST || '127.0.0.1'
 
 const app = fastify({ logger: false });
 
@@ -24,7 +26,7 @@ app.get('/', (res, reply) => {
 
 produtosRoute(app)
 
-app.listen({ /* host: 'localhost', */ port: `5000` }, (err, address) => {
+app.listen({ host: HOST, port: PORT }, (err, address) => {
     if (err) {
         console.log(`Erro ao rodar os ervidor: ${err}`);
         return;
